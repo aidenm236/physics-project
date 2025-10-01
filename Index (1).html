@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Forces and Newton’s Laws of Motion</title>
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Matter.js and Chart.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+  :root{
+    --bg:#050612;--card:rgba(255,255,255,0.03);
+    --muted:#9aa8bb;--accent:#06b6d4;--accent-2:#f59e0b
+  }
+  body{margin:0;background:radial-gradient(800px 300px at 10% 10%,rgba(6,182,212,0.04),transparent),var(--bg);color:#e8f6ff;font-family:Inter,system-ui,Arial}
+  .container{max-width:1100px;margin:0 auto;padding:28px}
+  header{display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .logo{font-weight:800;color:#c7f9ff}
+  nav a{color:var(--muted);padding:8px 12px;border-radius:8px;text-decoration:none}
+  nav a:hover{background:rgba(255,255,255,0.02);transform:translateY(-3px)}
+  .neon-card{background:var(--card);border:1px solid rgba(255,255,255,0.04);box-shadow:0 12px 45px rgba(2,6,23,0.7);border-radius:14px;padding:18px}
+  h1,h2,h3{color:#dff6ff}
+  .muted{color:var(--muted)}
+  .fade-in{opacity:0;transform:translateY(20px);transition:all .6s ease}
+  .fade-in.visible{opacity:1;transform:none}
+  .img-card{background:#fff;padding:8px;border-radius:8px;display:inline-block}
+  .img-card img{display:block;max-width:100%;height:auto}
+  details summary{cursor:pointer}
+  code{background:#061426;padding:2px 6px;border-radius:6px}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div>
+      <div class="logo text-2xl">Forces and Newton’s Laws of Motion</div>
+      <div class="muted text-sm">Interactive Study Resource</div>
+    </div>
+    <nav>
+      <a href="#intro">Intro</a>
+      <a href="#forces">9 Forces</a>
+      <a href="#laws">Newton’s Laws</a>
+      <a href="#fbd">FBDs</a>
+      <a href="#practice">Practice</a>
+      <a href="#simulator">Simulator</a>
+    </nav>
+  </header>
+
+  <!-- INTRO -->
+  <section id="intro" class="neon-card mt-6 fade-in">
+    <h2>What is a Force?</h2>
+    <p class="muted">
+      A force is an interaction between two objects. It can change the object’s velocity by producing an acceleration. 
+      Every force has an agent (the object that causes it) and a receiver (the object it acts on). Forces are vectors, so direction is as important as magnitude.
+    </p>
+    <div class="mt-3 img-card">
+      <img src="img/newton_cradle.svg" alt="Newton's cradle" width="320">
+    </div>
+  </section>
+
+  <!-- 9 FORCES -->
+  <section id="forces" class="neon-card mt-6 fade-in">
+    <h2>The Nine Types of Forces</h2>
+    <p class="muted">These are the forces discussed in this chapter, grouped as contact forces and field forces. Each description is paired with a practice problem at the AP Physics 1 level.</p>
+
+    <!-- 1. Weight -->
+    <article class="neon-card mt-4 p-4">
+      <h3>1. Gravitational Force (Weight)</h3>
+      <div class="img-card"><img src="img/fbd_flat_block.svg" alt="weight block" width="300"></div>
+      <p class="muted mt-2">
+        Weight is the force of Earth’s gravity on an object: <code>W = mg</code>. It is always directed vertically downward. Distinguish carefully between mass (a scalar property) and weight (a vector force).  
+        Apparent weight depends on acceleration: in an elevator accelerating upward, the normal force (scale reading) exceeds mg.
+      </p>
+      <details class="mt-2"><summary class="muted">AP Problem — Apparent Weight</summary>
+        <p class="muted">
+          A 70.0-kg student stands on a scale in an elevator accelerating upward at 2.0 m/s². What does the scale read?  
+          <strong>Solution:</strong> ΣF = ma → N - mg = ma → N = m(g + a) = 70(9.8 + 2.0) = 826 N.
+        </p>
+      </details>
+    </article>
+
+    <!-- 2. Normal -->
+    <article class="neon-card mt-4 p-4">
+      <h3>2. Normal Force</h3>
+      <div class="img-card"><img src="img/incline_fbd.svg" alt="incline normal force" width="320"></div>
+      <p class="muted mt-2">
+        A surface pushes on an object perpendicular to itself. For an object on an incline of angle θ with no vertical acceleration, <code>N = mg cosθ</code>. If an extra vertical push or pull is applied, N adjusts accordingly.
+      </p>
+      <details class="mt-2"><summary class="muted">AP Problem — Normal on Incline</summary>
+        <p class="muted">
+          A 10.0-kg block rests on a 30° incline. What is the normal force?  
+          <strong>Solution:</strong> N = mg cosθ = 10(9.8)(cos30°) = 84.9 N.
+        </p>
+      </details>
+    </article>
+
+    <!-- 3. Friction -->
+    <article class="neon-card mt-4 p-4">
+      <h3>3. Friction</h3>
+      <div class="img-card"><img src="img/friction_diagram.svg" alt="friction diagram" width="300"></div>
+      <p class="muted mt-2">
+        Friction opposes relative motion. Static friction resists starting motion up to a maximum of <code>μ_s N</code>. Kinetic friction resists sliding with <code>f_k = μ_k N</code>. Static friction adjusts to match applied force until its maximum is exceeded.
+      </p>
+      <details class="mt-2"><summary class="muted">AP Problem — Sliding Crate</summary>
+        <p class="muted">
+          A 12.0-kg box on a horizontal floor is pushed with 50.0 N. If μ_s = 0.40 and μ_k = 0.30, will it move? If so, find a.  
+          <strong>Solution:</strong> N = 12(9.8) = 117.6 N. f_s,max = 0.40×117.6 = 47.0 N. Since 50.0 > 47.0, it moves. f_k = 0.30×117.6 = 35.3 N. Net F = 50.0 - 35.3 = 14.7 N → a = 14.7/12 = 1.23 m/s².
+        </p>
+      </details>
+    </article>
+
+    <!-- 4. Tension -->
+    <article class="neon-card mt-4 p-4">
+      <h3>4. Tension</h3>
+      <div class="img-card"><img src="img/pulley_system.svg" alt="pulley" width="300"></div>
+      <p class="muted mt-2">
+        Tension is the pulling force transmitted by a rope or string, always directed away from the object. In ideal ropes (massless, inextensible, frictionless pulleys), the tension is uniform.
+      </p>
+      <details class="mt-2"><summary class="muted">AP Problem — Two Masses and Pulley</summary>
+        <p class="muted">
+          A 4.0-kg mass on a frictionless table is attached by a string over a pulley to a 3.0-kg hanging mass. Find the acceleration and the tension.  
+          <strong>Solution:</strong> m2 g - T = m2 a, T = m1 a. Solve → a = (m2 g)/(m1 + m2) = 3×9.8/7 = 4.2 m/s². Then T = m1 a = 16.8 N.
+        </p>
+      </details>
+    </article>
+
+    <!-- 5. Spring -->
+    <article class="neon-card mt-4 p-4">
+      <h3>5. Spring Force</h3>
+      <div class="img-card"><img src="img/spring_force.svg" alt="spring" width="300"></div>
+      <p class="muted mt-2">
+        A spring stretched or compressed by x exerts <code>F = -kx</code>. The minus sign means the force is restoring. Hooke’s law holds only within the spring’s elastic limit.
+      </p>
+      <details class="mt-2"><summary class="muted">AP Problem — Mass and Spring</summary>
+        <p class="muted">
+          A 0.50-kg block is attached to a horizontal spring with k = 200 N/m. The spring is stretched 0.10 m and released. Ignoring friction, what is the acceleration at that moment?  
+          <strong>Solution:</strong> F = kx = 200×0.10 = 20 N → a = F/m = 20/0.50 = 40 m/s².
+        </p>
+      </details>
+    </article>
+
+    <!-- 6. Applied -->
+    <article class="neon-card mt-4 p-4">
+      <h3>6. Applied Force</h3>
+      <div class="img-card"><img src="img/tension_rope.svg" alt="applied" width="300"></div>
+      <p class="muted mt-2">
+        Any push or pull by an agent is called an applied force. Its direction and effect depend on the situation. For example, pulling at an upward angle both helps move forward and reduces the normal force.
+      </p>
+      <details class="mt-2"><summary class="muted">AP Problem — Pulling at Angle</summary>
+        <p class="muted">
+          A 20.0-kg box is pulled with 100 N at 30° above horizontal across a rough surface (μ_k = 0.25). Find the acceleration.  
+          <strong>Solution:</strong> Components: F_x = 86.6 N, F_y = 50.0 N. N = mg - F_y = 196 - 50 = 146 N. f_k = μ_k N = 36.5 N. Net horizontal = 86.6 - 36.5 = 50.1 N. a = 50.1/20 = 2.51 m/s².
+        </p>
+      </details>
+    </article>
+
+    <!-- 7. Drag -->
+    <article class="neon-card mt-4 p-4">
+      <h3>7. Drag (Air Resistance)</h3>
+      <div class="img-card"><img src="img/drag_sphere.svg" alt="drag" width="300"></div>
+      <p class="muted mt-2">
+        Drag resists motion through air, opposing velocity. At higher speeds, it is modeled as quadratic: <code>F_d = ½ C_d A v²</code>. Terminal speed occurs when mg = F_d.
+      </p>
+      <details class="mt-2"><summary class="muted">AP Problem — Terminal Velocity</summary>
+        <p class="muted">
+          A 0.20-kg sphere with C_d = 0.50 and A = 0.010 m² falls through air. Find terminal velocity.  
+          <strong>Solution:</strong> v_t = √(2mg/(C_d A)) = √(2×0.20×9.8/(0.5×0.010)) ≈ 28 m/s.
+        </p>
+      </details>
+    </article>
+
+    <!-- 8. Electric -->
+    <article class="neon-card mt-4 p-4">
+      <h3>8. Electric Force</h3>
+      <div class="img-card"><img src="img/electric_force.svg" alt="electric" width="300"></div>
+      <p class="muted mt-2">
+        The electric force is a field force between charged objects, given by Coulomb’s law: <code>F = k q₁q₂ / r²</code>. It acts along the line connecting the charges, attractive if opposite in sign, repulsive if alike.
+      </p>
+      <details class="mt-2"><summary class="muted">AP Problem — Coulomb’s Law</summary>
+        <p class="muted">
+          Two charges +2.0 μC and −3.0 μC are 0.40 m apart. Find the force on the +2.0 μC charge.  
+          <strong>Solution:</strong> F = (8.99×10⁹)(2.0e-6)(3.0e-6)/(0.40²) = 0.34 N, directed toward the negative charge.
+        </p>
+      </details>
+    </article>
+
+    <!-- 9. Magnetic -->
+    <article class="neon-card mt-4 p-4">
+      <h3>9. Magnetic Force</h3>
+      <div class="img-card"><img src="img/magnetic_force.svg" alt="magnetic" width="300"></div>
+      <p class="muted mt-2">
+        A moving charge in a magnetic field experiences <code>F = qvB sinθ</code>, perpendicular to both velocity and field (right-hand rule). While detailed magnetism is later in physics, here it is presented as an example of a field force.
+      </p>
+      <details class="mt-2"><summary class="muted">AP Problem — Charge in Magnetic Field</summary>
+        <p class="muted">
+          A proton (q = 1.6×10⁻¹⁹ C) moves at 2.0×10⁶ m/s perpendicular to a 0.20 T magnetic field. Find the magnetic force.  
+          <strong>Solution:</strong> F = qvB = (1.6e-19)(2.0e6)(0.20) = 6.4×10⁻¹⁴ N.
+        </p>
+      </details>
+    </article>
+  </section>
+
+  <!-- LAWS -->
+  <section id="laws" class="neon-card mt-6 fade-in">
+    <h2>Newton’s Three Laws of Motion</h2>
+
+    <!-- First Law -->
+    <div class="mt-4">
+      <h3>First Law — Inertia</h3>
+      <div class="img-card"><img src="img/newton_cradle.svg" alt="first law" width="300"></div>
+      <p class="muted mt-2">
+        An object remains at rest or in uniform motion in a straight line unless acted on by a net external force. 
+        Inertia is the property of matter to resist changes in motion. 
+        Remember that "no acceleration" does not mean "no forces," but rather that forces balance to ΣF = 0.
+      </p>
+      <details class="mt-2"><summary class="muted">AP Problem — Hockey Puck</summary>
+        <p class="muted">
+          A hockey puck slides on ice with negligible friction. It hits a patch where kinetic friction is μₖ = 0.020. If the puck’s speed is initially 6.0 m/s, how far does it travel before stopping?  
+          <strong>Solution:</strong> a = −μₖg = −0.20 m/s². Using v² = v₀² + 2ax → 0 = 36 + 2(−0.20)x → x = 90 m.
+        </p>
+      </details>
+    </div>
+
+    <!-- Second Law -->
+    <div class="mt-6">
+      <h3>Second Law — ΣF = ma</h3>
+      <div class="img-card"><img src="img/fbd_flat_block.svg" alt="second law" width="300"></div>
+      <p class="muted mt-2">
+        The acceleration of an object is directly proportional to the net external force acting on it and inversely proportional to its mass. 
+        This is the quantitative heart of Newtonian mechanics. Always apply ΣF = ma in component form.
+      </p>
+      <details class="mt-2"><summary class="muted">AP Problem — Two Blocks and Rope</summary>
+        <p class="muted">
+          Two blocks, 5.0 kg and 3.0 kg, are connected by a rope on a frictionless table. A 20 N force pulls on the 5.0-kg block. Find the acceleration and the tension.  
+          <strong>Solution:</strong> ΣF = 20 = (5+3)a → a = 2.5 m/s².  
+          T = m₂a = 3×2.5 = 7.5 N.
+        </p>
+      </details>
+    </div>
+
+    <!-- Third Law -->
+    <div class="mt-6">
+      <h3>Third Law — Action-Reaction</h3>
+      <div class="img-card"><img src="img/tension_rope.svg" alt="third law" width="300"></div>
+      <p class="muted mt-2">
+        For every action force, there is an equal and opposite reaction force. These forces act on different bodies. Action–reaction pairs never cancel because they act on different objects.
+      </p>
+      <details class="mt-2"><summary class="muted">AP Problem — Pushing on a Wall</summary>
+        <p class="muted">
+          A person pushes on a wall with 150 N. The wall pushes back with 150 N. If forces are equal and opposite, why doesn’t the wall move?  
+          <strong>Solution:</strong> The wall experiences 150 N but is attached to Earth with enormous mass, so its acceleration is negligible. The equal force on the person is why their muscles feel the resistance.
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- FBD INSTRUCTIONS -->
+  <section id="fbd" class="neon-card mt-6 fade-in">
+    <h2>Free-Body Diagrams (FBDs)</h2>
+    <p class="muted">
+      A Free-Body Diagram is a drawing that shows all the forces acting on a single object, represented as arrows. It is the key tool for applying Newton’s Laws.
+    </p>
+    <h3 class="mt-3">Steps to Draw an FBD</h3>
+    <ol class="list-decimal ml-6 muted">
+      <li>Isolate the object of interest — represent it as a simple box or dot.</li>
+      <li>Draw a coordinate system if helpful (x and y axes).</li>
+      <li>Represent each force acting on the object as an arrow starting at the object.</li>
+      <li>Label each arrow clearly (W, N, f, T, F<sub>app</sub>, etc.).</li>
+      <li>Make the arrow length reflect relative magnitudes if possible.</li>
+    </ol>
+    <div class="mt-4 flex gap-4">
+      <div class="img-card">
+        <img src="img/fbd_flat_block.svg" alt="FBD of block on flat surface" width="260">
+      </div>
+      <div class="img-card">
+        <img src="img/incline_fbd.svg" alt="FBD of block on incline" width="260">
+      </div>
+    </div>
+  </section>
+
+  <!-- PRACTICE -->
+  <section id="practice" class="neon-card mt-6 fade-in">
+    <h2>Practice Problems</h2>
+    <p class="muted">Use these to test mastery.</p>
+
+    <article class="mt-4">
+      <h3>Problem 1</h3>
+      <p class="muted">A 5.0-kg block is pulled across a rough horizontal surface with a force of 25 N at 20° above horizontal. If μ_k = 0.25, find the acceleration. Draw an FBD.</p>
+      <p class="muted"><strong>Solution:</strong> Horizontal force = 25cos20° = 23.5 N, vertical component reduces normal. N = 49 − 8.55 = 40.5 N. Friction = 0.25×40.5 = 10.1 N. Net horizontal = 23.5 − 10.1 = 13.4 N. a = 13.4/5 = 2.68 m/s².</p>
+    </article>
+
+    <article class="mt-6">
+      <h3>Problem 2</h3>
+      <p class="muted">Two blocks, 8.0 kg and 2.0 kg, are connected by a rope over a pulley. The 8.0-kg block rests on a horizontal surface with μ_k = 0.10. Find the acceleration and the tension. Include an FBD for each block.</p>
+      <p class="muted"><strong>Solution:</strong> f_k = 0.10×(8×9.8) = 7.84 N. Net F = (2×9.8) − 7.84 = 11.8 N. Total mass = 10 kg → a = 11.8/10 = 1.18 m/s². T = m₂g − m₂a = 19.6 − 2.36 = 17.2 N.</p>
+    </article>
+
+    <article class="mt-6">
+      <h3>Problem 3 (with video)</h3>
+      <p class="muted">A 1.50-kg cart is pushed with a constant horizontal force of 6.0 N across a frictionless surface. What is its acceleration? If it starts from rest, what is its speed after 4.0 s?</p>
+      <div class="mt-2">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/ppKp32Ocsms" title="First practice problem" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </article>
+
+    <article class="mt-6">
+      <h3>Problem 4 (with video)</h3>
+      <p class="muted">A 0.40-kg ball is dropped from rest. Air resistance is negligible. Find its velocity after 2.5 s. Then, if drag (quadratic) acts and terminal velocity is 20 m/s, explain qualitatively how velocity differs.</p>
+      <div class="mt-2">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/sYBk7AwzVPg" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </article>
+  </section>
+
+  <!-- SIMULATOR -->
+  <section id="simulator" class="neon-card mt-6 fade-in">
+    <h2>Interactive Simulator — Quadratic Drag</h2>
+    <p class="muted">Experiment with mass, applied force, drag coefficient, and area. Watch velocity and acceleration graphs update in real time.</p>
+
+    <div class="grid lg:grid-cols-2 gap-6 mt-4">
+      <div class="neon-card p-4">
+        <h4>Controls</h4>
+        <label class="muted text-sm">Mass (kg)</label>
+        <input id="sim-mass" type="number" value="2" step="0.1" class="w-full px-2 py-2 rounded bg-black/10"/>
+        <label class="muted text-sm mt-2">Applied Force (N)</label>
+        <input id="sim-force" type="range" min="-60" max="120" value="0" class="w-full"/>
+        <label class="muted text-sm mt-2">Drag Coefficient C_d</label>
+        <input id="sim-cd" type="range" min="0" max="2" step="0.01" value="0.5" class="w-full"/>
+        <label class="muted text-sm mt-2">Area (m²)</label>
+        <input id="sim-area" type="number" value="0.05" step="0.01" class="w-full px-2 py-2 rounded bg-black/10"/>
+
+        <div class="mt-3 flex gap-2">
+          <button id="sim-toggle" class="cta">Toggle Apply</button>
+          <button id="sim-impulse" class="cta">Impulse</button>
+          <button id="sim-reset" class="cta">Reset</button>
+        </div>
+
+        <div class="grid grid-cols-3 gap-2 mt-3">
+          <div class="p-2 bg-black/10 rounded"><div class="muted text-xs">ΣF (N)</div><div id="sim-netF" class="text-amber-300">0.00</div></div>
+          <div class="p-2 bg-black/10 rounded"><div class="muted text-xs">a (m/s²)</div><div id="sim-ax" class="text-emerald-300">0.00</div></div>
+          <div class="p-2 bg-black/10 rounded"><div class="muted text-xs">Drag (N)</div><div id="sim-drag" class="text-sky-300">0.00</div></div>
+        </div>
+      </div>
+
+      <div class="neon-card p-4">
+        <canvas id="simCanvas" width="700" height="260" style="width:100%"></canvas>
+        <div class="mt-3"><canvas id="simChartV" height="100"></canvas></div>
+        <div class="mt-3"><canvas id="simChartA" height="100"></canvas></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="mt-8 muted">Forces and Newton’s Laws of Motion — study resource.</footer>
+</div>
+
+<!-- SCRIPTS -->
+<script>
+/* Fade-in */
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:0.1});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+
+/* Simulator */
+const {Engine,Render,World,Bodies,Body,Events}=Matter;
+const engine=Engine.create(),world=engine.world;
+const simCanvas=document.getElementById('simCanvas');
+const render=Render.create({canvas:simCanvas,engine,options:{width:simCanvas.width,height:simCanvas.height,wireframes:false,background:'#071025'}});
+const ground=Bodies.rectangle(simCanvas.width/2,simCanvas.height-12,simCanvas.width-80,24,{isStatic:true,render:{fillStyle:'#061426'}});
+const block=Bodies.rectangle(120,simCanvas.height-60,80,60,{render:{fillStyle:'#06b6d4'}});
+World.add(world,[ground,block]);Engine.run(engine);Render.run(render);
+
+const simChartV=new Chart(document.getElementById('simChartV'),{type:'line',data:{labels:[],datasets:[{label:'v_x (m/s)',data:[],borderColor:'#06b6d4',pointRadius:0}]},options:{animation:false}});
+const simChartA=new Chart(document.getElementById('simChartA'),{type:'line',data:{labels:[],datasets:[{label:'a_x (m/s²)',data:[],borderColor:'#f87171',pointRadius:0}]},options:{animation:false}});
+
+const simMass=document.getElementById('sim-mass'),simForce=document.getElementById('sim-force'),simCd=document.getElementById('sim-cd'),simArea=document.getElementById('sim-area');
+
+function setMass(b,m){if(Body.setMass)Body.setMass(b,m);else{b.mass=m;b.inverseMass=1/m;}}setMass(block,Number(simMass.value));
+simMass.addEventListener('change',()=>setMass(block,Math.max(0.01,Number(simMass.value))));
+
+let applyCont=false;document.getElementById('sim-toggle').onclick=()=>{applyCont=!applyCont;};
+document.getElementById('sim-impulse').onclick=()=>{Body.applyForce(block,block.position,{x:Number(simForce.value),y:0});};
+document.getElementById('sim-reset').onclick=()=>{Body.setPosition(block,{x:120,y:simCanvas.height-60});Body.setVelocity(block,{x:0,y:0});simChartV.data.labels=[];simChartV.data.datasets[0].data=[];simChartV.update();simChartA.data.labels=[];simChartA.data.datasets[0].data=[];simChartA.update();t=0;};
+
+let lastV=0,t=0;Events.on(engine,'beforeUpdate',e=>{
+  const dt=e.delta/1000;t+=dt;if(applyCont){
+    const m=Number(simMass.value);
+    const F_app=Number(simForce.value);
+    const Cd=Number(simCd.value);
+    const A=Number(simArea.value);
+
+    const v=block.velocity.x;
+    const drag=0.5*Cd*A*v*Math.abs(v);
+    const netF=F_app-drag;
+    const a=netF/m;
+
+    // Apply correct acceleration as force
+    Body.applyForce(block,block.position,{x:netF,y:0});
+
+    // Update charts every 0.05s
+    if(t % 0.05 < dt){
+      const label=t.toFixed(2);
+      simChartV.data.labels.push(label);
+      simChartV.data.datasets[0].data.push(block.velocity.x);
+      simChartV.update();
+      simChartA.data.labels.push(label);
+      simChartA.data.datasets[0].data.push(a);
+      simChartA.update();
+    }
+
+    document.getElementById('sim-netF').textContent=netF.toFixed(2);
+    document.getElementById('sim-ax').textContent=a.toFixed(2);
+    document.getElementById('sim-drag').textContent=drag.toFixed(2);
+  }
+});
+</script>
+</body>
+</html>
