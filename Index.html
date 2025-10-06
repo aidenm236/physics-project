@@ -88,7 +88,7 @@
       A force is an interaction between two objects that can change the motion of an object. In mechanics we treat forces as vectors: each has magnitude and direction. Forces result from interactions (contact or field) and always act on a specific object.
     </p>
     <div class="mt-3">
-      <div class="img-card"><img src="./img/newton_cradle.svg" alt="Newton's cradle" width="320"></div>
+      <div class="img-card"><img src="/img/newton_cradle.svg" alt="Newton's cradle" width="320"></div>
     </div>
   </section>
 
@@ -99,24 +99,17 @@
       Below are the common forces encountered in introductory mechanics. Each entry includes the origin, simple formula (where applicable), typical AP Physics 1 contexts, and a short practice problem with solution.
     </p>
 
-    <!-- 1: Gravitational / Weight -->
+    <!-- 1: Gravitational -->
     <article class="neon-card mt-4 p-4">
       <h3>1. Gravitational Force (Weight)</h3>
       <div class="grid-2 mt-2">
         <div>
           <p class="small-muted">
-            Near Earth's surface weight is modeled as <code>W = mg</code> directed downward. This is an approximation of the universal law when the separation is near Earth's radius. Weight is the force of Earth on an object and is distinct from mass.
+            Near Earth's surface weight is modeled as <code>W = mg</code> directed downward. This is an approximation of the universal law when the separation is near Earth's radius.
           </p>
-          <p class="small-muted"><strong>AP contexts:</strong> apparent weight, inclines, normal comparisons.</p>
-          <details class="mt-2"><summary class="small-muted">AP Problem — Apparent Weight</summary>
-            <div class="mt-2 small-muted">
-              <strong>Problem:</strong> A 70.0 kg person stands on a scale in an elevator accelerating upward at 1.6 m/s². What does the scale read?<br/>
-              <strong>Solution:</strong> N - mg = ma → N = m(g + a) = 70(9.80 + 1.6) = 798 N.
-            </div>
-          </details>
         </div>
         <div class="flex items-start justify-center">
-          <div class="img-card"><img src="./img/fbd_flat_block.svg" alt="weight normal diagram" width="300"></div>
+          <div class="img-card"><img src="/img/fbd_flat_block.svg" alt="weight normal diagram" width="300"></div>
         </div>
       </div>
     </article>
@@ -126,40 +119,20 @@
       <h3>2. Normal Force</h3>
       <div class="grid-2 mt-2">
         <div>
-          <p class="small-muted">
-            The normal force is the contact force a surface exerts on an object, always perpendicular to the surface. On an incline with no vertical acceleration, <code>N = mg cos θ</code>. Normal force changes when other vertical components are present.
-          </p>
-          <details class="mt-2"><summary class="small-muted">AP Problem — Normal on Incline</summary>
-            <div class="mt-2 small-muted">
-              <strong>Problem:</strong> A 10.0-kg block sits on a 30° incline. Find N. <br/>
-              <strong>Solution:</strong> N = mg cos30° = 10×9.8×cos30° ≈ 84.9 N.
-            </div>
-          </details>
+          <p class="small-muted">The normal force is the contact force a surface exerts on an object, always perpendicular to the surface.</p>
         </div>
         <div class="flex items-start justify-center">
-          <div class="img-card"><img src="./img/incline_fbd.svg" alt="incline normal force" width="300"></div>
+          <div class="img-card"><img src="/img/incline_fbd.svg" alt="incline normal force" width="300"></div>
         </div>
       </div>
     </article>
 
     <!-- 3: Friction -->
     <article class="neon-card mt-4 p-4">
-      <h3>3. Friction (static & kinetic)</h3>
+      <h3>3. Friction</h3>
       <div class="grid-2 mt-2">
-        <div>
-          <p class="small-muted">
-            Friction models tangential contact interactions. Static friction resists motion up to <code>f_s ≤ μ_s N</code>. Kinetic friction during sliding is <code>f_k = μ_k N</code>. Always check whether static friction can hold before switching to kinetic.
-          </p>
-          <details class="mt-2"><summary class="small-muted">AP Problem — Sliding Crate</summary>
-            <div class="mt-2 small-muted">
-              <strong>Problem:</strong> A 10.0 kg crate is pushed with 60.0 N. μ_s = 0.50, μ_k = 0.35. Does it move? If so, a? <br/>
-              <strong>Solution:</strong> N = mg = 98 N. f_s,max = 0.5×98 = 49 N. 60 > 49 → it moves. f_k = 0.35×98 = 34.3 N. Net F = 60 − 34.3 = 25.7 N → a = 25.7/10 = 2.57 m/s².
-            </div>
-          </details>
-        </div>
-        <div class="flex items-start justify-center">
-          <div class="img-card"><img src="./img/friction_diagram.svg" alt="friction diagram" width="300"></div>
-        </div>
+        <div><p class="small-muted">Friction resists motion along surfaces.</p></div>
+        <div class="flex items-start justify-center"><div class="img-card"><img src="/img/friction_diagram.svg" alt="friction diagram" width="300"></div></div>
       </div>
     </article>
 
@@ -167,20 +140,8 @@
     <article class="neon-card mt-4 p-4">
       <h3>4. Tension</h3>
       <div class="grid-2 mt-2">
-        <div>
-          <p class="small-muted">
-            Tension is the pulling force in a rope or string. For ideal massless ropes and frictionless pulleys, the magnitude of tension is the same everywhere in the rope. Model each mass with its own FBD and connect via the rope constraint.
-          </p>
-          <details class="mt-2"><summary class="small-muted">AP Problem — Pulley and Masses</summary>
-            <div class="mt-2 small-muted">
-              <strong>Problem:</strong> m1 = 4.0 kg on table (μ_k = 0.16), m2 = 3.0 kg hanging. Find a and T (sketch provided). <br/>
-              <strong>Sketch solution:</strong> m2 g − T = m2 a; T − f_k = m1 a. Solve the two equations for a and T.
-            </div>
-          </details>
-        </div>
-        <div class="flex items-start justify-center">
-          <div class="img-card"><img src="./img/pulley_system.svg" alt="pulley system" width="300"></div>
-        </div>
+        <div><p class="small-muted">Tension is the pulling force in a rope or string.</p></div>
+        <div class="flex items-start justify-center"><div class="img-card"><img src="/img/pulley_system.svg" alt="pulley system" width="300"></div></div>
       </div>
     </article>
 
@@ -188,20 +149,8 @@
     <article class="neon-card mt-4 p-4">
       <h3>5. Spring Force (Hooke's law)</h3>
       <div class="grid-2 mt-2">
-        <div>
-          <p class="small-muted">
-            An ideal spring exerts a restoring force <code>F_s = −k x</code>. The minus sign indicates the force is opposite displacement. Combine Hooke's law with energy (½ k x²) when useful for AP-style reasoning.
-          </p>
-          <details class="mt-2"><summary class="small-muted">AP Problem — Spring + friction energy</summary>
-            <div class="mt-2 small-muted">
-              <strong>Problem:</strong> A 2.0-kg block attached to k = 200 N/m spring is compressed x = 0.20 m on a surface with μ_k = 0.10. How far from equilibrium before stopping? <br/>
-              <strong>Outline:</strong> ½ k x² = μ_k m g d → solve for d.
-            </div>
-          </details>
-        </div>
-        <div class="flex items-start justify-center">
-          <div class="img-card"><img src="./img/spring_force.svg" alt="spring diagram" width="300"></div>
-        </div>
+        <div><p class="small-muted">An ideal spring exerts a restoring force <code>F_s = −k x</code>.</p></div>
+        <div class="flex items-start justify-center"><div class="img-card"><img src="/img/spring_force.svg" alt="spring diagram" width="300"></div></div>
       </div>
     </article>
 
@@ -209,41 +158,17 @@
     <article class="neon-card mt-4 p-4">
       <h3>6. Applied Force</h3>
       <div class="grid-2 mt-2">
-        <div>
-          <p class="small-muted">
-            Any push or pull by an agent (person, machine) is an applied force. Always state its direction and point of contact. If applied at an angle, resolve into components and account for vertical component altering N.
-          </p>
-          <details class="mt-2"><summary class="small-muted">AP Problem — Pulling at angle</summary>
-            <div class="mt-2 small-muted">
-              <strong>Problem:</strong> A person pulls a 12.0-kg suitcase with 30.0 N at 20° above horizontal across frictionless floor. Find acceleration. <br/>
-              <strong>Solution:</strong> F_x = 30 cos20°, a = F_x / m.
-            </div>
-          </details>
-        </div>
-        <div class="flex items-start justify-center">
-          <div class="img-card"><img src="./img/tension_rope.svg" alt="applied/tension" width="300"></div>
-        </div>
+        <div><p class="small-muted">Any push or pull by an agent is an applied force.</p></div>
+        <div class="flex items-start justify-center"><div class="img-card"><img src="/img/tension_rope.svg" alt="applied/tension" width="300"></div></div>
       </div>
     </article>
 
     <!-- 7: Drag -->
     <article class="neon-card mt-4 p-4">
-      <h3>7. Drag (Air resistance — quadratic model)</h3>
+      <h3>7. Drag</h3>
       <div class="grid-2 mt-2">
-        <div>
-          <p class="small-muted">
-            At moderate-to-high Reynolds numbers drag scales quadratically with speed: <code>F_d = ½ C_d A v²</code>, acting opposite velocity. Terminal speed occurs when ΣF = 0 so mg = ½ C_d A v_t².
-          </p>
-          <details class="mt-2"><summary class="small-muted">AP Problem — Terminal speed</summary>
-            <div class="mt-2 small-muted">
-              <strong>Problem:</strong> Sphere m = 0.20 kg, C_d = 0.47, A = 0.01 m². Find v_t. <br/>
-              <strong>Solution:</strong> v_t = √(2 m g / (C_d A)).
-            </div>
-          </details>
-        </div>
-        <div class="flex items-start justify-center">
-          <div class="img-card"><img src="./img/drag_sphere.svg" alt="drag sphere" width="300"></div>
-        </div>
+        <div><p class="small-muted">Drag opposes motion through a fluid.</p></div>
+        <div class="flex items-start justify-center"><div class="img-card"><img src="/img/drag_sphere.svg" alt="drag sphere" width="300"></div></div>
       </div>
     </article>
 
@@ -251,20 +176,8 @@
     <article class="neon-card mt-4 p-4">
       <h3>8. Electric Force</h3>
       <div class="grid-2 mt-2">
-        <div>
-          <p class="small-muted">
-            Coulomb's law: <code>F = k q₁ q₂ / r²</code>, acting along the line joining charges. While mechanics-focused, this is included as a field force example.
-          </p>
-          <details class="mt-2"><summary class="small-muted">AP Problem — Coulomb magnitude</summary>
-            <div class="mt-2 small-muted">
-              <strong>Problem:</strong> +2.0 μC and −3.0 μC separated by 0.40 m. Find force on +2.0 μC. <br/>
-              <strong>Solution:</strong> F = k (2.0e-6)(3.0e-6)/0.40² ≈ 0.34 N toward negative charge.
-            </div>
-          </details>
-        </div>
-        <div class="flex items-start justify-center">
-          <div class="img-card"><img src="./img/electric_force.svg" alt="electric diagram" width="300"></div>
-        </div>
+        <div><p class="small-muted">Coulomb's law governs electric forces between charges.</p></div>
+        <div class="flex items-start justify-center"><div class="img-card"><img src="/img/electric_force.svg" alt="electric diagram" width="300"></div></div>
       </div>
     </article>
 
@@ -272,71 +185,37 @@
     <article class="neon-card mt-4 p-4">
       <h3>9. Magnetic Force</h3>
       <div class="grid-2 mt-2">
-        <div>
-          <p class="small-muted">
-            A moving charge in a magnetic field experiences <code>F = q v B sinθ</code>, perpendicular to velocity and field. This is a field force example; typically used qualitatively in AP1 problems.
-          </p>
-          <details class="mt-2"><summary class="small-muted">AP Problem — Moving charge</summary>
-            <div class="mt-2 small-muted">
-              <strong>Problem:</strong> A proton (q = 1.6×10⁻¹⁹ C) moves at 2.0×10⁶ m/s perpendicular to a 0.20 T field. Find F. <br/>
-              <strong>Solution:</strong> F = q v B = 1.6e-19 × 2.0e6 × 0.20 = 6.4×10⁻¹⁴ N.
-            </div>
-          </details>
-        </div>
-        <div class="flex items-start justify-center">
-          <div class="img-card"><img src="./img/magnetic_force.svg" alt="magnetic" width="300"></div>
-        </div>
+        <div><p class="small-muted">A moving charge in a magnetic field experiences a force perpendicular to velocity and field.</p></div>
+        <div class="flex items-start justify-center"><div class="img-card"><img src="/img/magnetic_force.svg" alt="magnetic" width="300"></div></div>
       </div>
     </article>
-
   </section>
-
-  <!-- LAWS -->
+<!-- LAWS -->
   <section id="laws" class="neon-card mt-6 fade-in">
     <h2>Newton’s Three Laws of Motion</h2>
 
     <!-- First Law -->
     <div class="mt-4">
       <h3>First Law — Inertia</h3>
-      <div class="img-card mt-2"><img src="./img/newton_cradle.svg" alt="first law" width="300"></div>
-      <p class="muted mt-2">
-        An object remains at rest or moves at constant velocity unless acted upon by a net external force. In AP problems, "no acceleration" implies ΣF = 0 — check components carefully.
-      </p>
-      <details class="mt-2"><summary class="muted">AP Problem — Hockey Puck</summary>
-        <p class="muted">
-          A puck slides on ice and enters a patch with μ_k = 0.020. If v₀ = 6.0 m/s, how far before stopping? Use a = −μ_k g and v² = v₀² + 2 a x.
-        </p>
-      </details>
+      <div class="img-card mt-2"><img src="/img/newton_cradle.svg" alt="first law" width="300"></div>
+      <p class="muted mt-2">An object remains at rest or moves at constant velocity unless acted upon by a net external force.</p>
     </div>
 
     <!-- Second Law -->
     <div class="mt-6">
       <h3>Second Law — ΣF = ma</h3>
-      <div class="img-card mt-2"><img src="./img/fbd_flat_block.svg" alt="second law" width="300"></div>
-      <p class="muted mt-2">
-        Acceleration is proportional to net external force and inversely proportional to mass. Always apply ΣF = ma in components, and be explicit about sign conventions.
-      </p>
-      <details class="mt-2"><summary class="muted">AP Problem — Two Blocks and Rope</summary>
-        <p class="muted">
-          Two blocks 5.0 kg and 3.0 kg connected on frictionless surface pulled by 20 N. a = 20 / (5+3) = 2.5 m/s². T = m₂ a = 3 × 2.5 = 7.5 N.
-        </p>
-      </details>
+      <div class="img-card mt-2"><img src="/img/fbd_flat_block.svg" alt="second law" width="300"></div>
+      <p class="muted mt-2">Acceleration is proportional to net external force and inversely proportional to mass.</p>
     </div>
 
     <!-- Third Law -->
     <div class="mt-6">
       <h3>Third Law — Action–Reaction</h3>
-      <div class="img-card mt-2"><img src="./img/newton_third.svg" alt="third law" width="300"></div>
-      <p class="muted mt-2">
-        For every force (action) there is an equal and opposite force (reaction) acting on a different object. They never cancel on the same object; treat each body separately.
-      </p>
-      <details class="mt-2"><summary class="muted">AP Problem — Recoil</summary>
-        <p class="muted">
-          A 4.0 kg rifle fires a 0.020 kg bullet at 300 m/s. Using momentum conservation find rifle recoil speed: v_r = −(m_b v_b)/m_r.
-        </p>
-      </details>
+      <div class="img-card mt-2"><img src="/img/newton_cradle.svg" alt="third law" width="300"></div>
+      <p class="muted mt-2">For every force (action) there is an equal and opposite force acting on a different object.</p>
     </div>
   </section>
+
 
   <!-- FBD INSTRUCTIONS (particle-style, AP Physics 1 aligned) -->
   <section id="fbd" class="neon-card mt-6 fade-in">
